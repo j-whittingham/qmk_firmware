@@ -28,10 +28,10 @@ SWAP_HANDS_ENABLE = no      # Enable one-hand typing
 
 
 #Sofware flags on
-TAP_DANCE_ENABLE   = yes        # Enable multi-tap options
+#TAP_DANCE_ENABLE   = yes        # Enable multi-tap options
 #MOUSEKEY_ENABLE    = yes        # Mouse keys(+4700)
 #EXTRAKEY_ENABLE    = yes        # Audio control and System control(+450)
-WPM_ENABLE         = yes        # Enable live word counter
+#WPM_ENABLE         = yes        # Enable live word counter
 #VELOCIKEY_ENABLE= yes
  
 #Hardware flags
