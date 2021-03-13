@@ -31,7 +31,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // .-------+-------------+-----------+-----------+---------------+-------, ,------+-------------+-------------+-------+----------+--------.
     KC_LCTL, KC_A        , KC_S      , KC_D      ,LT(_NUMB,KC_F)  , KC_G   , KC_H  , KC_J        , KC_K        , KC_L  , KC_SCLN  , LT(_FUNC,KC_QUOT),
 // .-------+-------------+-----------+-----------+---------------+-------, ,------+-------------+-------------+-------+----------+--------.
-    LSFT_T(KC_ESC), LGUI_T(KC_Z), KC_X , KC_C    , KC_V          , KC_B   , KC_N  , KC_M        , KC_COMM     , KC_DOT, KC_SLSH  , KC_MINS ,
+    LSFT_T(KC_ESC), KC_Z, KC_X , KC_C    , KC_V          , KC_B   , KC_N  , KC_M        , KC_COMM     , KC_DOT, KC_SLSH  , KC_MINS ,
 // .-------+-------------+-----------+-----------+---------------+-------, ,------+-------------+-------------+-------+----------+--------.
                                        KC_LALT   , KC_LSFT ,LT(_FUNC,KC_DEL),KC_ENT, KC_SPC     , LT(_NAV,KC_NO)
 //                                   .-----------+---------------+-------, ,------+-------------+-------------.
@@ -63,13 +63,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [_FUNC] = LAYOUT( 
 // .-------+-------------+-----------+-----------+---------------+-------, ,------+-------------+-------------+-------+----------+--------.
-    KC_NO  ,KC_NO        ,KC_NO      ,KC_NO      ,KC_NO          ,KC_NO   ,KC_NO  ,KC_F7        ,KC_F8        ,KC_F9  ,KC_F10    ,KC_NO,
+    KC_NO  ,KC_NO        ,KC_F2      ,KC_NO      ,KC_NO          ,KC_NO   ,KC_NO  ,KC_F7        ,KC_F8        ,KC_F9  ,KC_F10    ,KC_NO,
 // .-------+-------------+-----------+-----------+---------------+-------, ,------+-------------+-------------+-------+----------+--------.
     KC_NO  ,KC_NO        ,KC_NO      ,KC_NO      ,KC_NO          ,KC_NO   ,KC_NO  ,KC_F4        ,KC_F5        ,KC_F6  ,KC_F11    ,KC_TRNS,
 // .-------+-------------+-----------+-----------+---------------+-------, ,------+-------------+-------------+-------+----------+--------.
-    KC_NO  ,KC_NO        ,KC_NO      ,KC_NO      ,KC_NO          ,KC_NO   ,KC_NO  ,KC_F1        ,KC_F2        ,KC_F3  ,KC_F12    ,KC_NO,
+    KC_NO  ,KC_NO        ,KC_NO      ,KC_NO      ,KC_LBRC        ,KC_RBRC ,KC_NO  ,KC_F1        ,KC_F2        ,KC_F3  ,KC_F12    ,KC_NO,
 // .-------+-------------+-----------+-----------+---------------+-------, ,------+-------------+-------------+-------+----------+--------.
-                                      KC_NO      ,KC_NO          ,KC_NO   , KC_NO ,KC_NO        ,KC_NO
+                                      KC_NO      ,KC_LSFT        ,KC_TRNS , KC_LEAD ,KC_NO        ,KC_NO
 //                                   .-----------+---------------+-------, ,------+-------------+-------------.
 )
 
@@ -115,3 +115,52 @@ void oled_task_user(void){
     }
 }
 #endif
+
+LEADER_EXTERNS();
+
+void matrix_scan_user(void) {
+  LEADER_DICTIONARY() {
+    leading = false;
+    leader_end();
+
+    SEQ_ONE_KEY(KC_F1) {
+      SEND_STRING("j.whittingham\"live.co.uk");
+    }
+    SEQ_ONE_KEY(KC_F2) {
+      SEND_STRING("joshua.whittingham\"pwc.com");
+    }
+    SEQ_ONE_KEY(KC_F3) {
+      SEND_STRING("test");
+    }
+    SEQ_ONE_KEY(KC_F4) {
+      SEND_STRING("test");
+    }
+    SEQ_ONE_KEY(KC_F5) {
+      SEND_STRING("test");
+    }
+    SEQ_ONE_KEY(KC_F6) {
+      SEND_STRING("test");
+    }
+    SEQ_ONE_KEY(KC_F7) {
+      SEND_STRING("test");
+    }
+    SEQ_ONE_KEY(KC_F8) {
+      SEND_STRING("test");
+    } 
+    SEQ_ONE_KEY(KC_F9) {
+      SEND_STRING("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.");
+    }
+    // SEQ_TWO_KEYS(KC_D, KC_D) {
+    //   SEND_STRING(SS_LCTL("a") SS_LCTL("c"));
+    // }
+    // SEQ_THREE_KEYS(KC_D, KC_D, KC_S) {
+    //   SEND_STRING("https://start.duckduckgo.com\n");
+    // }
+    // SEQ_TWO_KEYS(KC_A, KC_S) 
+    //   register_code(KC_LGUI);
+    //   register_code(KC_S);
+    //   unregister_code(KC_S);
+    //   unregister_code(KC_LGUI);
+    // }
+  }
+}

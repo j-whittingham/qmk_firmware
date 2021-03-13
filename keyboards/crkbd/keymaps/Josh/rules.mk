@@ -33,7 +33,8 @@ SWAP_HANDS_ENABLE = no      # Enable one-hand typing
 #EXTRAKEY_ENABLE    = yes        # Audio control and System control(+450)
 #WPM_ENABLE         = yes        # Enable live word counter
 #VELOCIKEY_ENABLE= yes
- 
+LEADER_ENABLE = yes              # Enable leader keys
+
 #Hardware flags
 BOOTLOADER         = qmk-dfu
 OLED_DRIVER_ENABLE = yes

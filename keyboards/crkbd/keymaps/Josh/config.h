@@ -108,5 +108,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 // #define OLED_FONT_HEIGHT 7
 
 #define OLED_DISABLE_TIMEOUT
+#define LEADER_TIMEOUT 300
 #define OLED_FONT_H "keyboards/crkbd/keymaps/Josh/glcdfont.c"
 #define TAPPING_TERM_PER_KEY
