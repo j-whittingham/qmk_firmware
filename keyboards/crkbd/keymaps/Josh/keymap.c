@@ -10,16 +10,12 @@ extern rgblight_config_t rgblight_config;
 
 extern uint8_t is_master;
 
-// Each layer gets a name for readability, which is then used in the keymap matrix below.
-// The underscores don't mean anything - you can have a layer called STUFF or any other name.
-// Layer names don't all need to be of the same length, obviously, and you can also skip them
-// entirely and just use numbers.
-
 enum crkbd_layers {
   _QWERTY,
   _NAV,
   _NUMB,
-  _FUNC
+  _FUNC,
+  _GAME
 };
 
 
@@ -29,9 +25,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // .-------+-------------+-----------+-----------+---------------+-------, ,------+-------------+-------------+-------+----------+--------.
     LGUI_T(KC_TAB), KC_Q , KC_W      , KC_E      , KC_R          , KC_T    , KC_Y , KC_U        , KC_I        , KC_O  , KC_P      ,KC_BSPC,
 // .-------+-------------+-----------+-----------+---------------+-------, ,------+-------------+-------------+-------+----------+--------.
-    KC_LCTL, KC_A        , KC_S      , KC_D      ,LT(_NUMB,KC_F)  , KC_G   , KC_H  , KC_J        , KC_K        , KC_L  , KC_SCLN  , LT(_FUNC,KC_QUOT),
+    KC_LCTL, KC_A        , KC_S      , KC_D      ,LT(_NUMB,KC_F) , KC_G    , KC_H , KC_J        , KC_K        , KC_L  , KC_SCLN  , LT(_FUNC,KC_QUOT),
 // .-------+-------------+-----------+-----------+---------------+-------, ,------+-------------+-------------+-------+----------+--------.
-    LSFT_T(KC_ESC), KC_Z, KC_X , KC_C    , KC_V          , KC_B   , KC_N  , KC_M        , KC_COMM     , KC_DOT, KC_SLSH  , KC_MINS ,
+    LSFT_T(KC_ESC), KC_Z, KC_X       , KC_C      , KC_V          , KC_B    , KC_N , KC_M        , KC_COMM     , KC_DOT, KC_SLSH  , KC_MINS ,
 // .-------+-------------+-----------+-----------+---------------+-------, ,------+-------------+-------------+-------+----------+--------.
                                        KC_LALT   , KC_LSFT ,LT(_FUNC,KC_DEL),KC_ENT, KC_SPC     , LT(_NAV,KC_NO)
 //                                   .-----------+---------------+-------, ,------+-------------+-------------.
@@ -39,7 +35,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [_NAV] = LAYOUT( 
 // .-------+-------------+-----------+-----------+---------------+-------, ,------+-------------+-------------+-------+----------+--------.
-    KC_LGUI ,KC_NO        ,KC_NO      ,KC_NO      ,KC_NO          ,KC_NO   ,KC_NO  ,KC_PGUP      ,KC_UP        ,KC_PGDN,KC_NO     ,KC_BSPC,
+    KC_LGUI ,KC_NO        ,KC_NO      ,KC_NO      ,KC_NO          ,KC_NO   ,KC_NO  ,KC_PGUP     ,KC_UP        ,KC_PGDN,KC_NO     ,KC_BSPC,
 // .-------+-------------+-----------+-----------+---------------+-------, ,------+-------------+-------------+-------+----------+--------.
     KC_LCTL,KC_NO        ,KC_NO      ,KC_NO      ,KC_NO          ,KC_NO   ,KC_NO  ,KC_LEFT      ,KC_DOWN      ,KC_RGHT,KC_NO     ,KC_NO,
 // .-------+-------------+-----------+-----------+---------------+-------, ,------+-------------+-------------+-------+----------+--------.
@@ -51,7 +47,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [_NUMB] = LAYOUT( 
 // .-------+-------------+-----------+-----------+---------------+-------, ,------+-------------+-------------+-------+----------+--------.
-    KC_NUHS, LSFT(KC_1)  ,LSFT(KC_9) ,LSFT(KC_0) ,KC_GRV   ,LSFT(KC_2) ,LSFT(KC_3),KC_7      ,KC_8         ,KC_9   ,KC_NO     ,KC_BSPC,
+    KC_NUHS, LSFT(KC_1)  ,LSFT(KC_9) ,LSFT(KC_0) ,KC_GRV   ,LSFT(KC_2) ,LSFT(KC_3),KC_7         ,KC_8         ,KC_9   ,KC_NO     ,KC_BSPC,
 // .-------+-------------+-----------+-----------+---------------+-------, ,------+-------------+-------------+-------+----------+--------.
     KC_LCTL, LSFT(KC_5)  ,KC_SLSH     ,KC_MINS   ,KC_TRNS    ,LSFT(KC_7)  , KC_EQL, KC_4        ,KC_5         ,KC_6 ,LSFT(KC_SCLN),KC_QUOT,
 // .-------+-------------+-----------+-----------+---------------+-------, ,------+-------------+-------------+-------+----------+--------.
@@ -67,12 +63,23 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // .-------+-------------+-----------+-----------+---------------+-------, ,------+-------------+-------------+-------+----------+--------.
     KC_NO  ,KC_NO        ,KC_NO      ,KC_NO      ,KC_NO          ,KC_NO   ,KC_NO  ,KC_F4        ,KC_F5        ,KC_F6  ,KC_F11    ,KC_TRNS,
 // .-------+-------------+-----------+-----------+---------------+-------, ,------+-------------+-------------+-------+----------+--------.
-    KC_NO  ,KC_NO        ,KC_NO      ,KC_NO      ,KC_LBRC        ,KC_RBRC ,KC_NO  ,KC_F1        ,KC_F2        ,KC_F3  ,KC_F12    ,KC_NO,
+    KC_NO  ,KC_NO        ,KC_NO      ,KC_NO      ,KC_LBRC        ,KC_RBRC ,KC_NO  ,KC_F1        ,KC_F2        ,KC_F3  ,KC_F12    ,TG(_GAME),
 // .-------+-------------+-----------+-----------+---------------+-------, ,------+-------------+-------------+-------+----------+--------.
-                                      KC_NO      ,KC_LSFT        ,KC_TRNS , KC_LEAD ,KC_NO        ,KC_NO
+                                      KC_NO      ,KC_LSFT        ,KC_TRNS ,KC_LEAD,KC_NO        ,KC_NO
+//                                   .-----------+---------------+-------, ,------+-------------+-------------.
+),
+
+[_GAME] = LAYOUT( 
+// .-------+-------------+-----------+-----------+---------------+-------, ,------+-------------+-------------+-------+----------+--------.
+    KC_TAB , KC_Q        , KC_W      , KC_E      , KC_R          , KC_T    , KC_Y , KC_U        , KC_UP       , KC_O  , KC_P      ,KC_BSPC,
+// .-------+-------------+-----------+-----------+---------------+-------, ,------+-------------+-------------+-------+----------+--------.
+    KC_LCTL, KC_A        , KC_S      , KC_D      ,KC_F           , KC_G    , KC_H , KC_LEFT     , KC_DOWN     ,KC_RGHT, KC_SCLN  , KC_DEL,
+// .-------+-------------+-----------+-----------+---------------+-------, ,------+-------------+-------------+-------+----------+--------.
+    KC_LSFT, KC_Z        , KC_X      , KC_C      , KC_V          , KC_B    , KC_N , KC_M        , KC_COMM     , KC_DOT, KC_SLSH  ,TG(_GAME),
+// .-------+-------------+-----------+-----------+---------------+-------, ,------+-------------+-------------+-------+----------+--------.
+                                       KC_LALT   , KC_SPC        ,KC_ENT   ,KC_ENT, KC_ESC      , KC_NO
 //                                   .-----------+---------------+-------, ,------+-------------+-------------.
 )
-
 // .-------+-------------+-----------+-----------+---------------+-------, ,------+-------------+-------------+-------+----------+--------.
 // .-------+-------------+-----------+-----------+---------------+-------, ,------+-------------+-------------+-------+----------+--------.
 // .-------+-------------+-----------+-----------+---------------+-------, ,------+-------------+-------------+-------+----------+--------.
@@ -106,6 +113,9 @@ void oled_task_user(void){
             break;
         case _FUNC:
             oled_write_ln_P(PSTR("FUNCT"), false);
+            break;
+        case _GAME:
+            oled_write_ln_P(PSTR("GAME"), false);
             break;
         default:
             oled_write_ln_P(PSTR("?????"), false);

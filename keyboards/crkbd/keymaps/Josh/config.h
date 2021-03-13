@@ -47,7 +47,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
 #ifdef RGB_MATRIX_ENABLE
-
 	#define RGB_MATRIX_KEYPRESSES // reacts to keypresses
 	// #define RGB_MATRIX_KEYRELEASES // reacts to keyreleases (instead of keypresses)
 	// #define RGB_DISABLE_TIMEOUT 0 // number of milliseconds to wait until rgb automatically turns off
@@ -110,4 +109,4 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define OLED_DISABLE_TIMEOUT
 #define LEADER_TIMEOUT 300
 #define OLED_FONT_H "keyboards/crkbd/keymaps/Josh/glcdfont.c"
-#define TAPPING_TERM_PER_KEY
+//#define TAPPING_TERM_PER_KEY

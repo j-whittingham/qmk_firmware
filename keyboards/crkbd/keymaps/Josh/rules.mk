@@ -17,7 +17,7 @@ SLEEP_LED_ENABLE = no    # Breathing sleep LED during USB suspend (Do not enable
 BOOTMAGIC_ENABLE = no       # Virtual DIP switch configuration(+1000)
 CONSOLE_ENABLE = no         # Console for debug(+400)
 COMMAND_ENABLE = no         # Commands for debug and configuration
-NKRO_ENABLE = no            # Nkey Rollover - if this doesn't work, see here: https://github.com/tmk/tmk_keyboard/wiki/FAQ#nkro-doesnt-work
+NKRO_ENABLE = yes            # Nkey Rollover - if this doesn't work, see here: https://github.com/tmk/tmk_keyboard/wiki/FAQ#nkro-doesnt-work
 BACKLIGHT_ENABLE = no       # Enable keyboard backlight functionality
 MIDI_ENABLE = no            # MIDI controls
 AUDIO_ENABLE = no           # Audio output on port C6
@@ -38,4 +38,4 @@ LEADER_ENABLE = yes              # Enable leader keys
 #Hardware flags
 BOOTLOADER         = qmk-dfu
 OLED_DRIVER_ENABLE = yes
-RGB_MATRIX_ENABLE  = WS2812
+#RGB_MATRIX_ENABLE  = WS2812
