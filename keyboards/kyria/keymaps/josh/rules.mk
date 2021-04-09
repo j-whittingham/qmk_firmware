@@ -1,5 +1,42 @@
-OLED_DRIVER_ENABLE = yes   # Enables the use of OLED displays
+# Build Options
+#   change to "no" to disable the options, or define them in the Makefile in
+#   the appropriate keymap folder that will get included automatically
+#
+
+# source file includes
+#SRC +=  ./lib/logo_reader.c \
+        #./lib/rgb_state_reader.c \
+        #./keymaps/Josh/layer_state_reader.c \
+        #./lib/keylogger.c \
+        #./lib/mode_icon_reader.c \
+        #./lib/host_led_state_reader.c \
+        #./lib/timelogger.c \
+
+#Sofware flags off
+SLEEP_LED_ENABLE = no    # Breathing sleep LED during USB suspend (Do not enable SLEEP_LED_ENABLE. it uses the same timer as BACKLIGHT_ENABLE)
+BOOTMAGIC_ENABLE = no       # Virtual DIP switch configuration(+1000)
+CONSOLE_ENABLE = no         # Console for debug(+400)
+COMMAND_ENABLE = no         # Commands for debug and configuration
+NKRO_ENABLE = yes            # Nkey Rollover - if this doesn't work, see here: https://github.com/tmk/tmk_keyboard/wiki/FAQ#nkro-doesnt-work
+BACKLIGHT_ENABLE = no       # Enable keyboard backlight functionality
+MIDI_ENABLE = no            # MIDI controls
+AUDIO_ENABLE = no           # Audio output on port C6
+UNICODE_ENABLE = no         # Unicode
+BLUETOOTH_ENABLE = no       # Enable Bluetooth with the Adafruit EZ-Key HID
+RGBLIGHT_ENABLE = no       # Enable WS2812 RGB underlight. 
+SWAP_HANDS_ENABLE = no      # Enable one-hand typing
+
+
+#Sofware flags on
+#TAP_DANCE_ENABLE   = yes        # Enable multi-tap options
+#MOUSEKEY_ENABLE    = yes        # Mouse keys(+4700)
+#EXTRAKEY_ENABLE    = yes        # Audio control and System control(+450)
+#WPM_ENABLE         = yes        # Enable live word counter
+#VELOCIKEY_ENABLE= yes
+LEADER_ENABLE = yes              # Enable leader keys
+
+#Hardware flags
+BOOTLOADER         = qmk-dfu
+OLED_DRIVER_ENABLE = yes
+#RGB_MATRIX_ENABLE  = WS2812
 ENCODER_ENABLE = yes       # Enables the use of one or more encoders
-RGBLIGHT_ENABLE = yes      # Enable keyboard RGB underglow
-LEADER_ENABLE = yes        # Enable the Leader Key feature
-MOUSEKEY_ENABLE = no

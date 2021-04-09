@@ -34,10 +34,8 @@
 #define ENCODER_RESOLUTION 2
 
 // The Leader key allows to flexibly assign macros to key sequences.
-#define LEADER_PER_KEY_TIMING
+//#define LEADER_PER_KEY_TIMING
 #define LEADER_TIMEOUT 350
-
-#define TAPPING_TERM 200
 
 // Allows to use either side as the master. Look at the documentation for info:
 // https://docs.qmk.fm/#/config_options?id=setting-handedness
@@ -45,3 +43,8 @@
 
 // Allows media codes to properly register in macros and rotary encoder code
 #define TAP_CODE_DELAY 10
+
+#define USE_SERIAL_PD2
+
+#define TAPPING_FORCE_HOLD
+#define TAPPING_TERM 200
