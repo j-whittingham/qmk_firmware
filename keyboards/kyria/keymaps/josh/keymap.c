@@ -45,16 +45,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                        `----------------------------------'  `----------------------------------'
  */
     [_QWERTY] = LAYOUT(
-      KC_ESC,  KC_Q,   KC_W,   KC_E,   KC_R,   KC_T,                                         KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_PIPE,
-      KC_LSFT, KC_A,   KC_S,   KC_D,   KC_F,   KC_G,                                         KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
-      KC_LCTL, KC_Z,   KC_X,   KC_C,   KC_V,   KC_B,   KC_CCCV,   XXXXXXX, KC_DEL, KC_LEAD,  KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_MINS,
-              KC_LGUI, KC_LALT, MO(LOWER), MT(MOD_LSFT, KC_SPC), MT(MOD_LALT, KC_ENT), KC_BSPC, LT(NAV, KC_SPC), MO(RAISE), KC_TAB, KC_RALT
+      KC_TAB,  KC_Q,   KC_W,   KC_E,   KC_R,   KC_T,                                         KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC,
+      KC_LCTL, KC_A,   KC_S,   KC_D,LT(_NUMB,KC_F),KC_G,                                     KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, LT(_FUNC,KC_QUOT),
+      KC_LSFT, KC_Z,   KC_X,   KC_C,   KC_V,   KC_B,  KC_ESC,  KC_LEAD,  XXXXXXX,  XXXXXXX,  KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_MINS,
+                           KC_LGUI, KC_LALT, KC_LSFT, LT(_FUNC,KC_DEL),  XXXXXXX,  XXXXXXX,  KC_ENT,  KC_SPC,LT(_NAV,KC_NO), KC_CCCV
     ),
 /*
  * Navigation Layer
  *
  * ,-------------------------------------------.                              ,-------------------------------------------.
- * |  Tab   |      |      |      |      |      |                              |      | PGUP |  Up  | PGDN |      |  BSPC  |
+ * |  Tab   |      |  F2  |      |      |      |                              |      | PGUP |  Up  | PGDN |      |  BSPC  |
  * |--------+------+------+------+------+------|                              |------+------+------+------+------+--------|
  * |  LCTL  |      |      |      |      |      |                              |      | Left | Down | Right|      |        |
  * |--------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+--------|
@@ -66,10 +66,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
  */
     [_NAV] = LAYOUT(
-      _______, _______, _______, KC_VOLU, _______, _______,                                     KC_SLSH, KC_7,    KC_8,    KC_9, KC_MINS, _______,
-      _______, _______, KC_MPRV, KC_MPLY, KC_MNXT, _______,                                     KC_ASTR, KC_4,    KC_5,    KC_6, KC_COMM, KC_PLUS,
-      _______, _______, _______, KC_VOLD, KC_MUTE, _______, _______, _______, _______, _______, KC_0,    KC_1,    KC_2,    KC_3, KC_EQL,  _______,
-                                 _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
+      KC_TAB,  XXXXXXX, KC_F2  , XXXXXXX, XXXXXXX, XXXXXXX,                                     XXXXXXX, KC_PGUP,KC_UP, KC_PGDN,  XXXXXXX, XXXXXXX,
+      KC_LCTL, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                                     XXXXXXX, KC_LEFT,KC_DOWN,KC_RGHT, XXXXXXX, XXXXXXX,
+      KC_LSFT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_HOME,KC_END ,KC_INS,  XXXXXXX, XXXXXXX,
+                                 KC_LGUI, KC_LALT, KC_LSFT, KC_DEL , XXXXXXX, XXXXXXX, KC_ENT , KC_SPC , _______, XXXXXXX
     ),
 /*
  * Number Layer
@@ -86,10 +86,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                        `----------------------------------'  `----------------------------------'
  */
     [_NUMB] = LAYOUT(
-      _______, KC_EXLM, KC_AT,   KC_LCBR, KC_RCBR, KC_PIPE,                                     _______, KC_UNDS, ALGR(KC_5),_______,_______,KC_BSLS,
-      _______, KC_HASH, KC_DLR,  KC_LPRN, KC_RPRN, KC_GRV,                                      KC_PLUS, KC_MINS, KC_SLSH, KC_ASTR, KC_PERC, KC_QUOT,
-      _______, KC_PERC, KC_CIRC, KC_LBRC, KC_RBRC, KC_TILD, _______, _______, _______, _______, KC_AMPR, KC_EQL,  KC_COMM, KC_DOT,  KC_SLSH, KC_MINS,
-                                 _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
+      KC_NUHS, LSFT(KC_1),LSFT(KC_9),LSFT(KC_0),KC_GRV,LSFT(KC_2),                           LSFT(KC_3), KC_7,    KC_8,    KC_9,    XXXXXXX, KC_BSPC,
+      KC_LCTL, LSFT(KC_5),KC_SLSH,KC_MINS,_______,LSFT(KC_7),                                    KC_EQL, KC_4,    KC_5,    KC_6,    LSFT(KC_SCLN),KC_QUOT,
+      KC_LSFT, LSFT(KC_6),LSFT(KC_8),LSFT(KC_EQL),KC_NUBS,XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,KC_DOT,KC_1,KC_2,    KC_3,    KC_SLSH   ,LSFT(KC_MINS),
+                                 KC_LGUI, KC_LALT, KC_LSFT,KC_DEL, XXXXXXX, XXXXXXX, KC_ENT , KC_SPC , KC_0, XXXXXXX
     ),
 /*
  * Function Layer
@@ -101,15 +101,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+--------|
  * |  LSFT  |      |      |      |  [ { |  ] } |      |      |  |      |      |      |  F1  | F2   | F3   | F12  |TG(Game)|
  * `----------------------+------+------+------+------+------|  |------+------+------+------+------+----------------------'
- *                        |      |      | Shift|      |      |  |      |      |      |      |      |
+ *                        |      |  Alt | Shift|      |      |  |      |      |      |      |      |
  *                        |      |      |      | XXXX |      |  |      |      |      |      |      |
  *                        `----------------------------------'  `----------------------------------'
  */
     [_FUNC] = LAYOUT(
-      _______, _______, _______, _______, _______, _______,                                     KC_PGUP, KC_HOME, KC_UP,   KC_END,  _______, KC_SLCK,
-      _______, _______, _______, _______, _______, _______,                                     KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, _______, KC_CAPS,
-      _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
-                                 _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
+      XXXXXXX, XXXXXXX, KC_F2  , XXXXXXX, XXXXXXX, XXXXXXX,                                     XXXXXXX, KC_F7,   KC_F8,   KC_F9,   KC_F10,  XXXXXXX,
+      KC_LCTL, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                                     XXXXXXX, KC_F4,   KC_F5,   KC_F6,   KC_F11,  _______,
+      KC_LSFT, XXXXXXX, XXXXXXX, XXXXXXX, KC_LBRC, KC_RBRC, XXXXXXX, KC_LEAD, XXXXXXX, XXXXXXX, XXXXXXX, KC_F1,   KC_F2,   KC_F3,   KC_F12,  TG(_GAME),
+                                 XXXXXXX, KC_LALT, KC_LSFT, _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
     ),
 /*
  * Game Layer
@@ -117,19 +117,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,-------------------------------------------.                              ,-------------------------------------------.
  * | Tab    |   Q  |   W  |   E  |   R  |   T  |                              |   Y  |   U  |   I  |   O  |   P  |  BSPC  |
  * |--------+------+------+------+------+------|                              |------+------+------+------+------+--------|
- * | LCTL   |   A  |   S  |   D  |   F  |   G  |                              |   H  |   J  |   K  |   L  | ;  : |  ' @   |
+ * | LCTL   |   A  |   S  |   D  |   F  |   G  |                              |   H  |   J  |   K  |   L  | ;  : |  Del   |
  * |--------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+--------|
- * | LSFT   |   Z  |   X  |   C  |   V  |   B  | Esc  |      |  |      |      |   N  |   M  | ,  < | . >  | /  ? |  - _   |
+ * | LSFT   |   Z  |   X  |   C  |   V  |   B  | Esc  |      |  |      |      |   N  |   M  | ,  < | . >  | /  ? |TG(Game)|
  * `----------------------+------+------+------+------+------|  |------+------+------+------+------+----------------------'
  *                        |      | Alt  | Space| Enter|      |  |      | Enter| Space|      |      |
  *                        |      |      |      |      |      |  |      |      |      |      |      |
  *                        `----------------------------------'  `----------------------------------'
  */
     [_GAME] = LAYOUT(
-      _______, _______, _______, _______, _______, _______,                                     _______, KC_F7,   KC_F8,   KC_F9,   KC_F10,  _______,
-      _______, _______, RGB_SAI, RGB_HUI, RGB_VAI, _______,                                     _______, KC_F4,   KC_F5,   KC_F6,   KC_F11,  _______,
-      _______, _______, RGB_SAD, RGB_HUD, RGB_VAD, _______, _______, _______, _______, _______, _______, KC_F1,   KC_F2,   KC_F3,   KC_F12,  _______,
-                                 _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
+      KC_TAB,  KC_Q,   KC_W,   KC_E,   KC_R,   KC_T,                                          KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC,
+      KC_LCTL, KC_A,   KC_S,   KC_D,   KC_F,   KC_G,                                          KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_DEL,
+      KC_LSFT, KC_Z,   KC_X,   KC_C,   KC_V,   KC_B,  KC_ESC,   XXXXXXX,   XXXXXXX, XXXXXXX,  KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, TG(_GAME),
+                           XXXXXXX, KC_LALT, KC_SPC,  KC_ENT,   XXXXXXX,   XXXXXXX,  KC_ENT,  KC_SPC, XXXXXXX,  XXXXXXX
     ),
 // /*
 //  * Layer template
@@ -297,32 +297,6 @@ void oled_task_user(void) {
 
 #ifdef ENCODER_ENABLE
 void encoder_update_user(uint8_t index, bool clockwise) {
-    if (index == 0) {
-        switch (biton32(layer_state)) {
-            case _QWERTY:
-                // History scrubbing. For Adobe products, hold shift while moving
-                // backward to go forward instead.
-                if (clockwise) {
-                    tap_code16(C(KC_Z));
-                } else {
-                    tap_code16(C(KC_Y));
-                }
-                break;
-            default:
-                // Switch between windows on Windows with alt tab.
-                if (clockwise) {
-                    if (!is_alt_tab_active) {
-                        is_alt_tab_active = true;
-                        register_code(KC_LALT);
-                    } 
-                    alt_tab_timer = timer_read();
-                    tap_code16(KC_TAB);
-                } else {
-                    tap_code16(S(KC_TAB));
-                }
-                break;
-        }
-    } else if (index == 1) {
         switch (biton32(layer_state)) {
             case _QWERTY:
                 // Scrolling with PageUp and PgDn.
@@ -341,6 +315,5 @@ void encoder_update_user(uint8_t index, bool clockwise) {
                 }
                 break;
         }
-    }
 }
 #endif
